@@ -1,0 +1,38 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.gradle/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+/out/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+/.integration-scripts
+
+*.log*
+infra/Dockerfile.made
+
+.DS_Store
+/*/target
+/log*
+/*/log
+
+files/
+old/

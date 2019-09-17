@@ -1,0 +1,78 @@
+plugins {
+    id "org.springframework.boot" version "2.1.7.RELEASE"
+}
+
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+apply from: "libraries.gradle"
+
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    compile "com.google.code.gson:gson:${gsonVersion}"
+    compile "com.google.guava:guava:${guavaVersion}"
+    compile "org.apache.commons:commons-lang3:${commonsLangVersion}"
+
+    compile "com.squareup.okhttp3:okhttp:${okHttpVersion}"
+
+    compile "org.springframework.data:spring-data-redis"
+    compile "redis.clients:jedis"
+    compile "org.postgresql:postgresql"
+
+    compile "com.sendgrid:sendgrid-java:${sendGridVersion}"
+    compile "org.jsoup:jsoup:${jSoupVersion}"
+    compile "javax.mail:mail:${javaxMailVersion}"
+
+    runtime "com.h2database:h2:${h2Version}"
+
+    compile "io.swagger:swagger-annotations:${swaggerVersion}"
+    compile "io.springfox:springfox-swagger-ui:${swaggerSpringVersion}"
+    compile "io.springfox:springfox-swagger2:${swaggerSpringVersion}"
+
+
+    compileOnly "com.google.code.findbugs:jsr305:${findBugsVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile "org.projectlombok:lombok"
+    testAnnotationProcessor "org.projectlombok:lombok"
+
+    compile "com.twilio.sdk:twilio:${twilioSdkVersion}"
+    compile "com.sun.xml.bind:jaxb-impl:${sunXmlBindVersion}"
+    compile "javax.xml.bind:jaxb-api:${javaxXmlBindVersion}"
+    compile "com.sun.istack:istack-commons-runtime:${sunIstackVersion}"
+    compile "org.springframework.boot:spring-boot-starter-security"
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+springBoot {
+    buildInfo()
+}
+
+bootJar {
+    archiveFileName = "${project.name}.jar"
+}
